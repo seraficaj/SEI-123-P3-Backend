@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const logger = require("morgan");
 
+// DotEnv setup
+require("dotenv").config();
+
 // Controllers
 const projectController = require("./controllers/projectControllers");
 
