@@ -6,7 +6,7 @@ const logger = require("morgan");
 
 // DotEnv setup
 require("dotenv").config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Controllers
 const projectController = require("./controllers/projectControllers");
