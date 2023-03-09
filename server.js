@@ -6,6 +6,7 @@ const logger = require("morgan");
 
 // DotEnv setup
 require("dotenv").config();
+const PORT = process.env.PORT || 3000;
 
 // Controllers
 const projectController = require("./controllers/projectControllers");
@@ -25,11 +26,11 @@ app.get("/", (req, res) => {
 
 app.use("/projects", projectController);
 
-mongoose.connect("mongodb://localhost:27017/tagteam");
+mongoose.connect(process.env.MONGODB_URL);
 mongoose.connection.once("open", () => {
   console.log("connected to MongoDB");
 });
 
-app.listen(3000, () => {
-  console.log("the server is listening at PORT:3000");
+app.listen(PORT, () => {
+  console.log("the server is listening at" + PORT);
 });
