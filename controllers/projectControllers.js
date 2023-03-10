@@ -36,7 +36,11 @@ router.post("/", async (req, res) => {
 // Update
 router.put("/:id", async (req, res) => {
   try {
-    req.body.teamMembers.push(req.body.newTeammate);
+    const foundProject = await ProjectModel.findById(req.params.id);
+    const currentTeamMates = foundProject.teamMembers;
+    if (req.body.newMember) {
+      req.body.teamMembers = [...currentTeamMates, req.body.newMember];
+    }
     const updatedProject = await ProjectModel.findByIdAndUpdate(
       req.params.id,
       req.body,
